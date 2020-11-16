@@ -14,6 +14,7 @@ namespace Instellingen
         MonitorInstellingen monitorInstellingen;
         GeluidsInstellingen geluidsInstellingen;
         BatterijInstellingen batterijInstellingen;
+        TaakBalkInstellingen taakBalkInstellingen;
         public InstellingenPanel()
         {
             InitializeComponent();
@@ -23,6 +24,9 @@ namespace Instellingen
             initializeSoundTrackbar();
             batterijInstellingen = new BatterijInstellingen();
             initializeBatterijGroupBox();
+            taakBalkInstellingen = new TaakBalkInstellingen();
+            initializeTaakBalkGroupBox();
+            initializeTaakBalkBox();
 
             StartTimerControlsUpdate();
 
@@ -61,14 +65,65 @@ namespace Instellingen
         {
 
         }
-        //plaseholder
         private void BatteryButtonPress(object sender, System.EventArgs e)
         {
             batterijInstellingen.changeBatterySettingsState();
         }
+        //Taakbalk
+        private void initializeTaakBalkGroupBox()
+        {
+           
+            if (taakBalkInstellingen.isAutoHide())
+            {
+                this.AutoVerbergen.Checked = true;
 
+            }
+            else
+            {
+                this.NietVerbergen.Checked = true;
+            }
+            this.AutoVerbergen.CheckedChanged += new EventHandler(TaakbalkButtonPress);
+        }
+        private void TaakbalkButtonPress(object sender, System.EventArgs e)
+        {
+            Debug.WriteLine("this.AutoVerbergen.Checked: " + this.AutoVerbergen.Checked);
+            taakBalkInstellingen.setAutoHide(this.AutoVerbergen.Checked);
+        }
+        //taakbalk positie
+        private void initializeTaakBalkBox()
+        {
+            switch (taakBalkInstellingen.GetTaskBarLocation())
+            {
+                case TaakBalkInstellingen.TOP:
+                    this.taakBalkBoven.Checked = true;
+                    break;
+                case TaakBalkInstellingen.RIGHT:
+                    this.taakBalkRechts.Checked = true;
+                    break;
+                case TaakBalkInstellingen.BOTTOM:
+                    this.taakBalkBeneden.Checked = true;
+                    break;
+                case TaakBalkInstellingen.LEFT:
+                    this.taakBalkLinks.Checked = true;
+                    break;
+                default:
+                    Console.WriteLine("Error");
+                    break;
 
+            }
 
+            this.taakBalkBoven.Click += new EventHandler(PositieTaakbalkButtonPress);
+            this.taakBalkRechts.Click += new EventHandler(PositieTaakbalkButtonPress);
+            this.taakBalkLinks.Click += new EventHandler(PositieTaakbalkButtonPress);
+            this.taakBalkBeneden.Click += new EventHandler(PositieTaakbalkButtonPress);
+        }
+
+        private void PositieTaakbalkButtonPress(object sender, System.EventArgs e)
+        {
+            
+           taakBalkInstellingen.setPositie((String)((RadioButton)sender).Tag);
+                   
+        }
 
         public void StartTimerControlsUpdate()
         {
@@ -83,6 +138,14 @@ namespace Instellingen
                 // Running on the UI thread
                 this.trackBrightness.Value = getTrackbarBrightnessValue();
                 this.trackSound.Value = getTrackbarSoundValue();
+                //beide TaakBalk
+                if (taakBalkInstellingen.isAutoHide())
+                {
+                    this.AutoVerbergen.Checked = true;
+                } else
+                {
+                    this.NietVerbergen.Checked = true;
+                }
             });
         }
 
@@ -94,7 +157,6 @@ namespace Instellingen
         {
             return (int)Math.Round((double)geluidsInstellingen.getVolume() / this.trackSound.Maximum);
         }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 

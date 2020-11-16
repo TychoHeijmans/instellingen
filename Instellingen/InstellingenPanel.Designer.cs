@@ -30,16 +30,22 @@
         {
             this.trackBrightness = new System.Windows.Forms.TrackBar();
             this.trackSound = new System.Windows.Forms.TrackBar();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.AutoVerbergen = new System.Windows.Forms.RadioButton();
+            this.NietVerbergen = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.batterijBesparing = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TaakBalk = new System.Windows.Forms.GroupBox();
+            this.TaakBalkBox = new System.Windows.Forms.GroupBox();
+            this.taakBalkBeneden = new System.Windows.Forms.RadioButton();
+            this.taakBalkRechts = new System.Windows.Forms.RadioButton();
+            this.taakBalkBoven = new System.Windows.Forms.RadioButton();
+            this.taakBalkLinks = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.trackBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackSound)).BeginInit();
             this.batterijBesparing.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.TaakBalk.SuspendLayout();
+            this.TaakBalkBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // trackBrightness
@@ -56,30 +62,30 @@
             this.trackSound.Size = new System.Drawing.Size(341, 45);
             this.trackSound.TabIndex = 1;
             // 
-            // radioButton1
+            // AutoVerbergen
             // 
-            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 22);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 25);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.AutoVerbergen.Appearance = System.Windows.Forms.Appearance.Button;
+            this.AutoVerbergen.AutoSize = true;
+            this.AutoVerbergen.Location = new System.Drawing.Point(7, 22);
+            this.AutoVerbergen.Name = "AutoVerbergen";
+            this.AutoVerbergen.Size = new System.Drawing.Size(99, 25);
+            this.AutoVerbergen.TabIndex = 3;
+            this.AutoVerbergen.TabStop = true;
+            this.AutoVerbergen.Text = "Auto verbergen";
+            this.AutoVerbergen.UseVisualStyleBackColor = true;
+            this.AutoVerbergen.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioButton2
+            // NietVerbergen
             // 
-            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(92, 22);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(86, 25);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.NietVerbergen.Appearance = System.Windows.Forms.Appearance.Button;
+            this.NietVerbergen.AutoSize = true;
+            this.NietVerbergen.Location = new System.Drawing.Point(105, 22);
+            this.NietVerbergen.Name = "NietVerbergen";
+            this.NietVerbergen.Size = new System.Drawing.Size(95, 25);
+            this.NietVerbergen.TabIndex = 4;
+            this.NietVerbergen.TabStop = true;
+            this.NietVerbergen.Text = "Niet verbergen";
+            this.NietVerbergen.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
@@ -116,34 +122,104 @@
             this.batterijBesparing.TabStop = false;
             this.batterijBesparing.Text = "Batterij besparing";
             // 
-            // groupBox2
+            // TaakBalk
             // 
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Location = new System.Drawing.Point(31, 200);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(209, 62);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.TaakBalk.Controls.Add(this.AutoVerbergen);
+            this.TaakBalk.Controls.Add(this.NietVerbergen);
+            this.TaakBalk.Location = new System.Drawing.Point(31, 200);
+            this.TaakBalk.Name = "TaakBalk";
+            this.TaakBalk.Size = new System.Drawing.Size(209, 62);
+            this.TaakBalk.TabIndex = 8;
+            this.TaakBalk.TabStop = false;
+            this.TaakBalk.Text = "Taakbalk verbergen";
+            // 
+            // TaakBalkBox
+            // 
+            this.TaakBalkBox.Controls.Add(this.taakBalkBeneden);
+            this.TaakBalkBox.Controls.Add(this.taakBalkRechts);
+            this.TaakBalkBox.Controls.Add(this.taakBalkBoven);
+            this.TaakBalkBox.Controls.Add(this.taakBalkLinks);
+            this.TaakBalkBox.Location = new System.Drawing.Point(29, 267);
+            this.TaakBalkBox.Name = "TaakBalkBox";
+            this.TaakBalkBox.Size = new System.Drawing.Size(210, 169);
+            this.TaakBalkBox.TabIndex = 9;
+            this.TaakBalkBox.TabStop = false;
+            this.TaakBalkBox.Tag = "up";
+            this.TaakBalkBox.Text = "Taakbalk positie";
+            // 
+            // taakBalkBeneden
+            // 
+            this.taakBalkBeneden.Appearance = System.Windows.Forms.Appearance.Button;
+            this.taakBalkBeneden.AutoSize = true;
+            this.taakBalkBeneden.Location = new System.Drawing.Point(63, 101);
+            this.taakBalkBeneden.Name = "taakBalkBeneden";
+            this.taakBalkBeneden.Size = new System.Drawing.Size(63, 25);
+            this.taakBalkBeneden.TabIndex = 3;
+            this.taakBalkBeneden.TabStop = true;
+            this.taakBalkBeneden.Tag = "down";
+            this.taakBalkBeneden.Text = "Beneden";
+            this.taakBalkBeneden.UseVisualStyleBackColor = true;
+            // 
+            // taakBalkRechts
+            // 
+            this.taakBalkRechts.Appearance = System.Windows.Forms.Appearance.Button;
+            this.taakBalkRechts.AutoSize = true;
+            this.taakBalkRechts.Location = new System.Drawing.Point(128, 75);
+            this.taakBalkRechts.Name = "taakBalkRechts";
+            this.taakBalkRechts.Size = new System.Drawing.Size(52, 25);
+            this.taakBalkRechts.TabIndex = 2;
+            this.taakBalkRechts.TabStop = true;
+            this.taakBalkRechts.Tag = "right";
+            this.taakBalkRechts.Text = "Rechts";
+            this.taakBalkRechts.UseVisualStyleBackColor = true;
+            // 
+            // taakBalkBoven
+            // 
+            this.taakBalkBoven.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.taakBalkBoven.Appearance = System.Windows.Forms.Appearance.Button;
+            this.taakBalkBoven.AutoSize = true;
+            this.taakBalkBoven.Location = new System.Drawing.Point(68, 51);
+            this.taakBalkBoven.Name = "taakBalkBoven";
+            this.taakBalkBoven.Size = new System.Drawing.Size(50, 25);
+            this.taakBalkBoven.TabIndex = 1;
+            this.taakBalkBoven.TabStop = true;
+            this.taakBalkBoven.Tag = "up";
+            this.taakBalkBoven.Text = "Boven";
+            this.taakBalkBoven.UseVisualStyleBackColor = true;
+            // 
+            // taakBalkLinks
+            // 
+            this.taakBalkLinks.Appearance = System.Windows.Forms.Appearance.Button;
+            this.taakBalkLinks.AutoSize = true;
+            this.taakBalkLinks.Location = new System.Drawing.Point(18, 75);
+            this.taakBalkLinks.Name = "taakBalkLinks";
+            this.taakBalkLinks.Size = new System.Drawing.Size(44, 25);
+            this.taakBalkLinks.TabIndex = 0;
+            this.taakBalkLinks.TabStop = true;
+            this.taakBalkLinks.Tag = "left";
+            this.taakBalkLinks.Text = "Links";
+            this.taakBalkLinks.UseVisualStyleBackColor = true;
             // 
             // InstellingenPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TaakBalkBox);
             this.Controls.Add(this.batterijBesparing);
             this.Controls.Add(this.trackSound);
             this.Controls.Add(this.trackBrightness);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.TaakBalk);
             this.Name = "InstellingenPanel";
             this.Text = "Instellingen";
             ((System.ComponentModel.ISupportInitialize)(this.trackBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackSound)).EndInit();
             this.batterijBesparing.ResumeLayout(false);
             this.batterijBesparing.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.TaakBalk.ResumeLayout(false);
+            this.TaakBalk.PerformLayout();
+            this.TaakBalkBox.ResumeLayout(false);
+            this.TaakBalkBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,12 +229,18 @@
 
         private System.Windows.Forms.TrackBar trackBrightness;
         private System.Windows.Forms.TrackBar trackSound;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton AutoVerbergen;
+        private System.Windows.Forms.RadioButton NietVerbergen;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.GroupBox batterijBesparing;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox TaakBalk;
+        private System.Windows.Forms.GroupBox t;
+        private System.Windows.Forms.GroupBox TaakBalkBox;
+        private System.Windows.Forms.RadioButton taakBalkBeneden;
+        private System.Windows.Forms.RadioButton taakBalkRechts;
+        private System.Windows.Forms.RadioButton taakBalkBoven;
+        private System.Windows.Forms.RadioButton taakBalkLinks;
     }
 }
 
